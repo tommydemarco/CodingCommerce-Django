@@ -1,0 +1,16 @@
+/* MASTER CSS */
+
+/* ===== HEADER ====== */
+.header-top {background-color: #f3f3f3;border-top: 5px solid #2980b9;}
+.top-slogan {font-size:18px}
+.header.style-04 .header-nav {background-color: #f3f3f3;}
+body .header.style-04 .header-nav {margin-bottom: 0px;}
+.header-logo a img {width:210px}
+
+/* form */
+.header.style-04 .kobolg-live-search-form .txt-livesearch {font-size:17px}
+.header.style-04 .kobolg-live-search-form .txt-livesearch {font-size:16px}
+
+/* ===== MAIN =======*/
+.main-container {padding-top:0px!important;padding-bottom:50px!important;}
+.section-001 {padding-top: 55px;padding-bottom: 55px;}

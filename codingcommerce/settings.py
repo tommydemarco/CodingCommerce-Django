@@ -2,7 +2,7 @@ from django.core.exceptions import ImproperlyConfigured
 import json
 
 from unipath import Path
-BASE_DIR = Path(__file__).ancestor(3)
+BASE_DIR = Path(__file__).ancestor(2)
 
 
 # Quick-start development settings - unsuitable for production

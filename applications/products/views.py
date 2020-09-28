@@ -18,7 +18,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 '''======= HOME PAGE VIEW ========'''
 class HomeView(ListView):
     model = Product
-    template_name = 'home'
+    template_name = 'products/home.html'
 
-    ordering = ["-date_posted"]
+    #ordering = ["-date_posted"]
     paginate_by = 12

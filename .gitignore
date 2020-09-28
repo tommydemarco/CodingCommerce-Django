@@ -12,6 +12,9 @@ __pycache__
 db.sqlite3
 media
 
+#useless images
+static/assets/images
+
 #ignore json secrets
 secret.json
 

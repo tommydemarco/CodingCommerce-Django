@@ -29,3 +29,6 @@ class Product(models.Model):
     description     = models.TextField(max_length=500)
     tags            = models.ManyToManyField(Tag)
     image           = models.ImageField('Image', default="default-product.jpg", upload_to='products')
+    link            = models.CharField(max_length=100)
+    new             = models.BooleanField(default=False)
+    on_sale         = models.BooleanField(default=False)
