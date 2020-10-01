@@ -1,9 +1,9 @@
 from django.urls import path, include
+from rest_framework import routers
+from .viewsets import ProductViewSet, CategoryViewSet
 
-from .views import *
+route = routers.SimpleRouter()
+route.register('product', ProductViewSet)
+route.register('category', CategoryViewSet)
 
-urlpatterns = [
-    #home page view
-    path('', HomeView.as_view(), name="home"),
-    path('api/products/list/', ProductsAPIListView.as_view(), name="home"),
-]
+urlpatterns = route.urls

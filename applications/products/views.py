@@ -19,22 +19,31 @@ from rest_framework.generics import ListAPIView
 #serializers
 from .serializers import ProductSerializer
 
-'''======= HOME PAGE VIEW ========'''
-class HomeView(ListView):
-    model = Product
-    template_name = 'products/home.html'
-    context_object_name = 'products'
+# '''======= HOME PAGE VIEW ========'''
+# class HomeView(ListView):
+#     model = Product
+#     template_name = 'products/home.html'
+#     context_object_name = 'products'
 
-    #ordering = ["-date_posted"]
-    paginate_by = 12
+#     #ordering = ["-date_posted"]
+#     paginate_by = 12
 
-    def get_queryset(self):
-        return Product.objects.all()
+#     def get_queryset(self):
+#         return Product.objects.all()
+       
 
 '''======= PRODUCTS API VIEW ========'''
 class ProductsAPIListView(ListAPIView):
-
     serializer_class = ProductSerializer
-
     def get_queryset(self):
         return Product.objects.all()
+
+
+'''======= PRODUCTS SEARCH API VIEW ========'''
+class ProductsAPISearchView(ListAPIView):
+    serializer_class = ProductSerializer
+    def get_queryset(self):
+        kword = self.kwargs['kword']
+        return Product.objects.filter(
+            id=kword
+        )
