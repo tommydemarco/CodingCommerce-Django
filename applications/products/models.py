@@ -33,6 +33,7 @@ class Product(models.Model):
     link            = models.CharField(max_length=100)
     new             = models.BooleanField(default=False)
     on_sale         = models.BooleanField(default=False)
+    hottest_deal    = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name 
