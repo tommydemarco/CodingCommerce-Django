@@ -14,10 +14,10 @@ body .header.style-04 .header-nav {margin-bottom: 0px;}
 
 /* ===== MAIN =======*/
 .main-container {padding-top:50px!important;padding-bottom:50px!important;}
-.section-001 {padding-top: 55px;padding-bottom: 55px;}
+.section-001 {padding-top: 55px;padding-bottom: 00px; box-shadow: none ;}
 
 /*===== STICKY SIDEBAR ====*/
-.sidebar-sticky {position:sticky; top:130px}
+.sidebar-sticky {position:sticky; top:135px}
 
 
 
