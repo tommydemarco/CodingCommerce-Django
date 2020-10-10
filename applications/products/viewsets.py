@@ -9,7 +9,7 @@ from .serializers import ProductSerializer, CategorySerializer
 
 '''=========> PRODUCT VIEW SETS '''
 
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -36,11 +36,18 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 '''=========> CATEGORY VIEW SETS '''
 
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-    @action(detail=True, methods=['get'])
+    #getting all categories in a single result, not paginated
+    @action(detail=False, methods=['get'])
+    def all(self, request):
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
     def products(self, request, pk):
         queryset = Product.objects.filter(category_id=pk)
         serializer = ProductSerializer(queryset, many=True)
