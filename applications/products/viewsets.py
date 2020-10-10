@@ -7,16 +7,34 @@ from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
 
 
+'''=========> PRODUCT VIEW SETS '''
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    #gets the products on sale and new with the help of the primary key
     @action(detail=True, methods=['get'])
     def sale(self, request, pk):
-        queryset = Product.objects.filter(on_sale=pk)
+        queryset = Product.objects.filter(on_sale=True, new=pk)
         serializer = ProductSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+    #getting only products on sale without a primary key
+    @action(detail=False)
+    def onsale(self, request):
+        on_sale_products = Product.objects.filter(on_sale=True)
 
+        page = self.paginate_queryset(on_sale_products)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(on_sale_products, many=True)
+        return Response(serializer.data)
+
+
+'''=========> CATEGORY VIEW SETS '''
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -28,15 +46,3 @@ class CategoryViewSet(viewsets.ModelViewSet):
         serializer = ProductSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    '''
-    def list(self, request):
-        queryset = Category.objects.all()
-        serializer = CategorySerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    def retrieve(self, request, pk=None):
-        queryset = Category.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = CategorySerializer(user)
-        return Response(serializer.data)
-    '''
