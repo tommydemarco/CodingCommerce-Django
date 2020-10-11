@@ -15,8 +15,8 @@ from .forms import UserProfileUpdateForm, UserUpdateForm
 @login_required 
 def profile(request): 
     if request.method == 'POST':
-        p_form = UserProfileUpdateForm(request.POST, instance=request.user.userprofile)
-        u_form = UserUpdateForm(request.POST, request.FILES, instance=request.user) 
+        p_form = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
+        u_form = UserUpdateForm(request.POST, instance=request.user) 
         if p_form.is_valid() and u_form.is_valid():
             p_form.save()
             u_form.save()
