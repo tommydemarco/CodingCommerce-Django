@@ -97,3 +97,11 @@
     font-weight: 600;
     color: #0062cc;
 }
+
+/*===== ALERTS ======*/
+.alert-fixed  {
+    position: fixed;
+    top: 80px;
+    right: 1.9%;
+    z-index: 1000;
+}
