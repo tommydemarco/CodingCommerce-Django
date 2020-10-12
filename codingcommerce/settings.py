@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my apps
     'applications.products',
+    'applications.azienda',
     #third party
     'rest_framework',
     'corsheaders',
@@ -114,10 +115,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #GLOBAL PAGINATION SETTINGS
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 1
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+#     'PAGE_SIZE': 1
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
