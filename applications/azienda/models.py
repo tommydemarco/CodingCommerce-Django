@@ -18,8 +18,9 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     image = models.ImageField(upload_to="azienda/products")
-    tags = models.ManyToManyField(Tag, null=True, blank=True)
+    tags = models.ManyToManyField(Tag)
     category = models.ForeignKey(Category, null=False, blank=False, on_delete=models.CASCADE)
+    price = models.FloatField(null=True, blank=True)
     home_page = models.BooleanField(default=False)
     on_sale = models.BooleanField(default=False)
 
