@@ -18,3 +18,9 @@ class ProductsAPIDetail(ListAPIView):
     def get_queryset(self):
         id = self.kwargs['id']
         return Product.objects.filter(id=id)
+
+class EmployeeAPIList(ListAPIView):
+    serializer_class = EmployeeSerializer
+    
+    def get_queryset(self):
+        return Employee.objects.all()
