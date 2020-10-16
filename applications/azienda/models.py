@@ -38,3 +38,13 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.name
+
+class Article(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    image = models.ImageField(upload_to="azienda/blog")
+
+    def __str__(self):
+        return self.title
+
+ 

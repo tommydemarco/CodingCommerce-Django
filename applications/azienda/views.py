@@ -29,3 +29,9 @@ class EmployeeAPIList(ListAPIView):
     
     def get_queryset(self):
         return Employee.objects.all()
+
+class ArticlesAPIList(ListAPIView):
+    serializer_class = ArticleSerializer
+    
+    def get_queryset(self):
+        return Article.objects.all()
