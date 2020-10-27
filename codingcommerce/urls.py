@@ -7,22 +7,15 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings 
 from django.conf.urls.static import static
 
-#JWT 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
-
 
 urlpatterns = [
+    #=========> ADMIN
     path('admin/', admin.site.urls),
+    #=========> API CONNECTION
     path('api/', include('applications.products.urls')),
-    path('accounts/', include('applications.accounts.urls')),
+    #=========> CMS 
+    path('', include('applications.accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('api/azienda/', include('applications.azienda.urls')),
-    #JWT
-    path('api/azienda/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/azienda/api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 if settings.DEBUG == True: 

@@ -28,6 +28,8 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
 
 # CORS_ALLOW_HEADERS = list(default_headers) + [
@@ -47,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my apps
     'applications.products',
-    'applications.azienda',
     #third party
     'rest_framework',
     'corsheaders',
@@ -148,6 +149,8 @@ STATICFILES_DIRS = [BASE_DIR.child('static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.child('media')
+
+LOGIN_REDIRECT_URL = '/'
 
 #JWT
 REST_FRAMEWORK = {

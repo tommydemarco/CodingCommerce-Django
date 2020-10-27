@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, UpdateView
+from django.views.generic import TemplateView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin as LoginRequired
 from django.shortcuts import redirect
 #login required decorator 
@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import UserProfileUpdateForm, UserUpdateForm
+
+#importing models
+from applications.products.models import Product
 
 # Create your views here.
 
@@ -32,4 +35,13 @@ def profile(request):
         'u_form': u_form,
     }
 
-    return render(request, 'accounts/profile.html', context)
+    return render(request, 'admin/profile.html', context)
+
+#product list Class based View
+class ProductsList(ListView): 
+    model: Product
+    template_name = 'products_list.html'
+
+    def get_queryset(self):
+        return Product.objects.all()
+    
