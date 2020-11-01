@@ -28,8 +28,7 @@ def profile(request):
     else:
         p_form = UserProfileUpdateForm(instance=request.user.userprofile)
         u_form = UserUpdateForm(instance=request.user) 
-    
-
+    s
     context = {
         'p_form': p_form, 
         'u_form': u_form,

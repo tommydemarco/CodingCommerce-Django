@@ -3,25 +3,17 @@ from django.db import models
 # Create your models here.
 
 class Category(models.Model):
-    category = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    subtitle = models.CharField(max_length=70, default="default product subtile")
     clean_url = models.CharField(max_length=50, null=True, blank=True)
+    image = models.ImageField('Image', default="default-category.jpg", upload_to='categories')
 
     class Meta:
         verbose_name        = 'Category'
         verbose_name_plural = 'Categories'
 
     def __str__(self):
-        return self.category
-
-# class Tag(models.Model):
-#     name = models.CharField('Name', max_length=50)
-
-#     class Meta:
-#         verbose_name = 'Tag'
-#         verbose_name_plural = 'Tags'
-
-#     def __str__(self):
-#         return self.name
+        return self.title
 
 class Product(models.Model):
     name            = models.CharField(max_length=50)
